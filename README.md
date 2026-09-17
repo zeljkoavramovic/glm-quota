@@ -20,7 +20,7 @@ It is a standalone Python port of the [opencode-glm-quota](https://github.com/gu
 
 - **Python 3.7+** (uses `sys.stdout.reconfigure`); standard library only, nothing to `pip install`
 - **Z.AI GLM Coding Plan subscription** (Lite and up)
-- **API key**: set it as an environment variable  (needed only if the key isn't already in your global environment). The raw token is expected, with no `Bearer` prefix:
+- **API key**: set it as an environment variable (needed only if the key isn't already in your global environment). The raw token is expected, with no `Bearer` prefix:
 
 ```bash
 # bash / Git Bash
