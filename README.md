@@ -1,6 +1,6 @@
-# glm-quota
+# GLM Quota
 
-A single-file Python CLI tool that shows your Z.AI GLM Coding Plan usage: quota limits, token consumption, MCP tool calls, 5h window reset time, and a 24h trend chart - printed directly to the console. No dependencies, no config files, just run it.
+A single-file Python CLI tool that shows your Z.AI GLM Coding Plan usage: quota limits, token consumption, MCP tool calls, 5h window reset time, and a 24h trend chart - printed directly to the console. No dependencies, no config files, no token usage, just run it.
 
 ![Screenshot](screenshot.png)
 
@@ -49,7 +49,6 @@ The whole tool is one script. Clone the repo or download `glm-quota.py`:
 ```bash
 git clone https://github.com/zeljkoavramovic/glm-quota.git
 cd glm-quota
-python glm-quota.py
 ```
 
 There is nothing to install. Run the script with any Python 3.7+ interpreter.
@@ -57,7 +56,11 @@ There is nothing to install. Run the script with any Python 3.7+ interpreter.
 ## Usage
 
 ```bash
+# Windows (cmd / PowerShell / Git Bash)
 python glm-quota.py [flags]
+
+# Linux / macOS
+python3 glm-quota.py [flags]
 ```
 
 With no flags, the full report (all five tables) is printed.
@@ -75,9 +78,15 @@ With no flags, the full report (all five tables) is printed.
 Table flags can be combined; tables are printed in report order:
 
 ```bash
+# Windows
 python glm-quota.py --summary
 python glm-quota.py --model --ascii
 python glm-quota.py --limits --usage
+
+# Linux / macOS
+python3 glm-quota.py --summary
+python3 glm-quota.py --model --ascii
+python3 glm-quota.py --limits --usage
 ```
 
 ### Example: `--summary`
