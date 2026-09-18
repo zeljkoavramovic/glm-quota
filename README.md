@@ -1,6 +1,6 @@
 # GLM Quota
 
-A single-file Python CLI tool that shows your Z.AI GLM Coding Plan usage: quota limits, token consumption, MCP tool calls, 5h window reset time, and a 24h trend chart - printed directly to the console. No dependencies, no config files, no token usage, just run it.
+A single-file Python CLI tool that shows your **Z.AI GLM Coding Plan** usage: quota limits, token consumption, MCP tool calls, 5h window reset time, and a 24h trend chart - printed directly to the console. No dependencies, no config files, no token usage, just run it.
 
 ![Screenshot](screenshot.png)
 
