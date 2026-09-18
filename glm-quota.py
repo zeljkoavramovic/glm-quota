@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
 """glm-quota.py - Z.AI GLM Coding Plan usage viewer.
 
-Standalone Python port of the omp glm-quota extension CLI runner
-(C:\\Users\\Avra\\.omp\\agent\\extensions\\glm-quota.ts). Queries the three
-Z.ai monitoring endpoints and prints a report directly to the console:
-no markdown intermediate, no emoji, Unicode block characters only
-(works in cmd, PowerShell, Git Bash, Linux, macOS).
+Query the three Z.AI monitoring endpoints and print a report to the console
+Works in Windows, Linux, and macOS.
 
 Authentication: ZAI_API_KEY or Z_AI_API_KEY (international) or, as a
 fallback, ZHIPU_API_KEY / ZHIPUAI_API_KEY / BIGMODEL_API_KEY (CN Zhipu
@@ -33,10 +30,6 @@ import urllib.request
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timedelta
 
-# ============================================================================
-# Constants
-# ============================================================================
-
 # Keys are region-locked: each key only authenticates against its own region's host.
 ENDPOINTS_GLOBAL = {
     "quotaLimit": "https://api.z.ai/api/monitor/usage/quota/limit",
@@ -50,27 +43,31 @@ ENDPOINTS_CN = {
     "toolUsage": "https://open.bigmodel.cn/api/monitor/usage/tool-usage",
 }
 
-REQUEST_TIMEOUT_S = 10
+# ============================================================================
+# Constants
+# ============================================================================
 
-FIVE_HOUR_LABEL = "Token usage(5 Hour)"
-WEEKLY_LABEL = "Token usage(Weekly)"
-MCP_LABEL = "MCP usage(1 Month)"
-TOKENS_LIMIT = "TOKENS_LIMIT"
+REQUEST_TIMEOUT_S   = 10
+
+FIVE_HOUR_LABEL     = "Token usage(5 Hour)"
+WEEKLY_LABEL        = "Token usage(Weekly)"
+MCP_LABEL           = "MCP usage(1 Month)"
+TOKENS_LIMIT        = "TOKENS_LIMIT"
 DEFAULT_TOKEN_LIMIT = 40_000_000
 
-PROGRESS_WIDTH = 25
-TREND_LEVELS = "▁▂▃▄▅▆▇"
-TREND_FULL = "█"
-EIGHTH_BLOCKS = "▏▎▍▌▋▊▉"
-TREND_LEVELS_ASCII = "_.,-~+*"
-TREND_FULL_ASCII = "#"
+PROGRESS_WIDTH      = 25
+TREND_LEVELS        = "▁▂▃▄▅▆▇"
+TREND_FULL          = "█"
+EIGHTH_BLOCKS       = "▏▎▍▌▋▊▉"
+TREND_LEVELS_ASCII  = "_.,-~+*"
+TREND_FULL_ASCII    = "#"
 
 # ============================================================================
 # Credentials
 # ============================================================================
 
-INT_API_KEY_VARS = ("ZAI_API_KEY", "Z_AI_API_KEY")
-CN_API_KEY_VARS = ("ZHIPU_API_KEY", "ZHIPUAI_API_KEY", "BIGMODEL_API_KEY")
+INT_API_KEY_VARS    = ("ZAI_API_KEY", "Z_AI_API_KEY")
+CN_API_KEY_VARS     = ("ZHIPU_API_KEY", "ZHIPUAI_API_KEY", "BIGMODEL_API_KEY")
 
 
 def get_credentials():
